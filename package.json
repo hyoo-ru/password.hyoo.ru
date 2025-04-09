@@ -187,7 +187,9 @@
     "$mol_crypto_hash",
     "$mol_crypto",
     "$mol_base64_encode",
-    "$mol_base64"
+    "$mol_base64",
+    "$mol_offline_install",
+    "$mol_offline"
   ],
   "dependencies": {
     "jsdom": "*"

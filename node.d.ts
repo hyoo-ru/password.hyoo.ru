@@ -2410,6 +2410,13 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
 
 	type $mol_link_source__uri_hyoo_password_1 = $mol_type_enforce<
 		string
