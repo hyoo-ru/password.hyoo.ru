@@ -1,6 +1,7 @@
 {
 	"$hyoo_password_Close_hint": "Очистить и закрыть",
 	"$hyoo_password_Context_block_name": "Уникальное имя домена или приложения",
+	"$hyoo_password_Context_clear_hint": "Очистить",
 	"$hyoo_password_Hint_dictionary_formula": "Формула: BASE64( SHA-1( Мастер + \"\\n\" + Контекст ) )",
 	"$hyoo_password_Hint_dictionary_no_store": "Никакие пароли нигде не сохраняются",
 	"$hyoo_password_Hint_dictionary_offline": "Работает мгновенно из офлайна",
