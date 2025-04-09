@@ -1284,6 +1284,20 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    interface $mol_locale_dict {
+        [key: string]: string;
+    }
+    class $mol_locale extends $mol_object {
+        static lang_default(): string;
+        static lang(next?: string): string;
+        static source(lang: string): any;
+        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
+        static text(key: string): string;
+        static warn(key: string): null;
+    }
+}
+
+declare namespace $ {
     type $mol_style_pseudo_class = ':active' | ':any' | ':any-link' | ':checked' | ':default' | ':defined' | ':dir(rtl)' | ':dir(ltr)' | ':disabled' | ':empty' | ':enabled' | ':first' | ':first-child' | ':first-of-type' | ':fullscreen' | ':focus' | ':focus-visible' | ':focus-within' | ':hover' | ':indeterminate' | ':in-range' | ':invalid' | ':last-child' | ':last-of-type' | ':left' | ':link' | ':not()' | ':nth-child(even)' | ':nth-child(odd)' | ':nth-last-child(even)' | ':nth-last-child(odd)' | ':nth-of-type(even)' | ':nth-of-type(odd)' | ':nth-last-of-type(even)' | ':nth-last-of-type(odd)' | ':only-child' | ':only-of-type' | ':optional' | ':out-of-range' | ':placeholder-shown' | ':read-only' | ':read-write' | ':required' | ':right' | ':root' | ':scope' | ':target' | ':valid' | ':visited';
 }
 
@@ -1483,20 +1497,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=text.view.tree.d.ts.map
-declare namespace $ {
-    interface $mol_locale_dict {
-        [key: string]: string;
-    }
-    class $mol_locale extends $mol_object {
-        static lang_default(): string;
-        static lang(next?: string): string;
-        static source(lang: string): any;
-        static texts(lang: string, next?: $mol_locale_dict): $mol_locale_dict;
-        static text(key: string): string;
-        static warn(key: string): null;
-    }
-}
-
 declare namespace $ {
 
 	export class $mol_link_source extends $mol_link {
@@ -2538,7 +2538,7 @@ declare namespace $ {
 		ReturnType< $mol_form_field['Content'] >
 	>
 	type $mol_page__title_hyoo_password_13 = $mol_type_enforce<
-		string
+		ReturnType< $hyoo_password['title'] >
 		,
 		ReturnType< $mol_page['title'] >
 	>
@@ -2563,6 +2563,7 @@ declare namespace $ {
 	>
 	export class $hyoo_password extends $mol_view {
 		Theme( ): $mol_theme_auto
+		title( ): string
 		Source( ): $mol_link_source
 		Lights( ): $mol_lights_toggle
 		master( next?: string ): string

@@ -299,7 +299,7 @@ $hyoo_password $mol_view
 		<= Theme $mol_theme_auto
 	sub /
 		<= Page $mol_page
-			title @ \Password generator
+			title <= title @ \Password generator
 			tools /
 				<= Source $mol_link_source
 					uri \https://github.com/hyoo-ru/password.hyoo.ru
