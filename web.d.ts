@@ -2624,6 +2624,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $hyoo_password extends $.$hyoo_password {
         master(next?: string): string;
+        context(next?: string): string;
         fields(): $.$mol_form_field[];
         password(): string;
         context_clear(): void;

@@ -7660,6 +7660,9 @@ var $;
             master(next) {
                 return this.$.$mol_state_session.value('master', next) ?? '';
             }
+            context(next) {
+                return next ?? ($mol_dom.document.referrer && new URL($mol_dom.document.referrer).hostname || '');
+            }
             fields() {
                 return [
                     this.Master_block(),
@@ -7682,6 +7685,9 @@ var $;
                 this.$.$mol_dom.close();
             }
         }
+        __decorate([
+            $mol_mem
+        ], $hyoo_password.prototype, "context", null);
         __decorate([
             $mol_mem
         ], $hyoo_password.prototype, "fields", null);
