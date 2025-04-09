@@ -5,10 +5,11 @@ namespace $.$$ {
 			return this.$.$mol_state_session.value( 'master', next ) ?? ''
 		}
 		
+		@ $mol_mem
 		password() {
-			const sens = $mol_charset_encode( `${ this.master() }\n ${ this.context() }` )
-			const hash = $mol_crypto_hash( sens ).slice( 0, 14 )
-			return $mol_base64_encode( hash )
+			const context = $mol_charset_encode( this.context() )
+			const sacred = $mol_wire_sync( this.$ ).$mol_crypto_sacred_pass( this.master(), context )
+			return $mol_base64_encode( sacred.asArray() )
 		}
 		
 	}
