@@ -2606,6 +2606,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     class $mol_style_sheet_test1 extends $mol_view {
@@ -2847,9 +2850,6 @@ var $;
         },
     });
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
