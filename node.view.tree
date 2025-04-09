@@ -118,6 +118,8 @@ $mol_lights_toggle $mol_check_icon
 	hint @ \Toggle lights
 	checked? <=> lights? false
 
+$mol_icon_close $mol_icon path \M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z
+
 $mol_hotkey $mol_plugin
 	event *
 		^
@@ -207,6 +209,12 @@ $mol_form_field $mol_labeler
 			sub / <= bid \
 	content / <= control null
 
+$mol_icon_trash_can $mol_icon path \M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z
+
+$mol_icon_trash_can_outline $mol_icon path \M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z
+
+$mol_bar $mol_view
+
 $mol_chip $mol_view
 	sub /
 		<= title
@@ -228,8 +236,6 @@ $mol_button_copy $mol_button_minor
 		<= Icon $mol_icon_clipboard_outline
 		<= title \
 
-
-$mol_bar $mol_view
 
 $mol_scroll $mol_view
 	scroll_top? 0
@@ -304,15 +310,26 @@ $hyoo_password $mol_view
 				<= Source $mol_link_source
 					uri \https://github.com/hyoo-ru/password.hyoo.ru
 				<= Lights $mol_lights_toggle
-			body /
+				<= Close $mol_button_minor
+					hint @ \Clear and close
+					click? <=> close? null
+					sub /
+						<= Close_icon $mol_icon_close
+			body <= fields /
 				<= Master_block $mol_form_field
 					name @ \Master password for all generations
 					Content <= Master $mol_password
 						value? <=> master? \
 				<= Context_block $mol_form_field
-					name @ \URL, Domain or App Name
-					Content <= Context $mol_string
-						value? <=> context? \
+					name @ \Unique domain or application name
+					Content <= Context_bar $mol_bar sub /
+						<= Context $mol_string
+							value? <=> context? \
+						<= Context_clear $mol_button_minor
+							hint @ \Clear
+							click? <=> context_clear? null
+							sub /
+								<= Clear_icon $mol_icon_trash_can_outline
 				<= Password_block $mol_form_field
 					name @ \Unique strong password
 					Content <= Password_bar $mol_bar sub /
@@ -324,4 +341,5 @@ $hyoo_password $mol_view
 			dictionary *
 				no_store @ \All passwords don't stored anywhere
 				offline @ \Working instantly offline
+				strong @ \Use strongest master password
 				formula @ \Formula: BASE64( SHA-1( master + "\n" + context ) )

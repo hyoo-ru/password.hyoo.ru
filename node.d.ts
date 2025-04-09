@@ -1800,6 +1800,15 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_close extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=close.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $mol_hotkey extends $mol_plugin {
 		keydown( next?: any ): any
 		event( ): ({ 
@@ -2118,6 +2127,35 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $mol_icon_trash_can extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=can.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_trash_can_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_bar extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=bar.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $mol_chip extends $mol_view {
 		sub( ): readonly(any)[]
 	}
@@ -2200,17 +2238,6 @@ declare namespace $.$$ {
     }
 }
 
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_bar extends $mol_view {
-	}
-	
-}
-
-//# sourceMappingURL=bar.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_scroll extends $mol_view {
@@ -2557,25 +2584,25 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link_source['uri'] >
 	>
-	type $mol_password__value_hyoo_password_2 = $mol_type_enforce<
+	type $mol_button_minor__hint_hyoo_password_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_hyoo_password_3 = $mol_type_enforce<
+		ReturnType< $hyoo_password['close'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_hyoo_password_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_password__value_hyoo_password_5 = $mol_type_enforce<
 		ReturnType< $hyoo_password['master'] >
 		,
 		ReturnType< $mol_password['value'] >
-	>
-	type $mol_form_field__name_hyoo_password_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_form_field['name'] >
-	>
-	type $mol_form_field__Content_hyoo_password_4 = $mol_type_enforce<
-		ReturnType< $hyoo_password['Master'] >
-		,
-		ReturnType< $mol_form_field['Content'] >
-	>
-	type $mol_string__value_hyoo_password_5 = $mol_type_enforce<
-		ReturnType< $hyoo_password['context'] >
-		,
-		ReturnType< $mol_string['value'] >
 	>
 	type $mol_form_field__name_hyoo_password_6 = $mol_type_enforce<
 		string
@@ -2583,54 +2610,90 @@ declare namespace $ {
 		ReturnType< $mol_form_field['name'] >
 	>
 	type $mol_form_field__Content_hyoo_password_7 = $mol_type_enforce<
-		ReturnType< $hyoo_password['Context'] >
+		ReturnType< $hyoo_password['Master'] >
 		,
 		ReturnType< $mol_form_field['Content'] >
 	>
-	type $mol_chip__title_hyoo_password_8 = $mol_type_enforce<
-		ReturnType< $hyoo_password['password'] >
+	type $mol_string__value_hyoo_password_8 = $mol_type_enforce<
+		ReturnType< $hyoo_password['context'] >
 		,
-		ReturnType< $mol_chip['title'] >
+		ReturnType< $mol_string['value'] >
 	>
-	type $mol_button_copy__text_hyoo_password_9 = $mol_type_enforce<
-		ReturnType< $hyoo_password['password'] >
+	type $mol_button_minor__hint_hyoo_password_9 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $mol_button_copy['text'] >
+		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_bar__sub_hyoo_password_10 = $mol_type_enforce<
+	type $mol_button_minor__click_hyoo_password_10 = $mol_type_enforce<
+		ReturnType< $hyoo_password['context_clear'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_hyoo_password_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_bar__sub_hyoo_password_12 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_bar['sub'] >
 	>
-	type $mol_form_field__name_hyoo_password_11 = $mol_type_enforce<
+	type $mol_form_field__name_hyoo_password_13 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_form_field['name'] >
 	>
-	type $mol_form_field__Content_hyoo_password_12 = $mol_type_enforce<
+	type $mol_form_field__Content_hyoo_password_14 = $mol_type_enforce<
+		ReturnType< $hyoo_password['Context_bar'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_chip__title_hyoo_password_15 = $mol_type_enforce<
+		ReturnType< $hyoo_password['password'] >
+		,
+		ReturnType< $mol_chip['title'] >
+	>
+	type $mol_button_copy__text_hyoo_password_16 = $mol_type_enforce<
+		ReturnType< $hyoo_password['password'] >
+		,
+		ReturnType< $mol_button_copy['text'] >
+	>
+	type $mol_bar__sub_hyoo_password_17 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_bar['sub'] >
+	>
+	type $mol_form_field__name_hyoo_password_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_hyoo_password_19 = $mol_type_enforce<
 		ReturnType< $hyoo_password['Password_bar'] >
 		,
 		ReturnType< $mol_form_field['Content'] >
 	>
-	type $mol_page__title_hyoo_password_13 = $mol_type_enforce<
+	type $mol_page__title_hyoo_password_20 = $mol_type_enforce<
 		ReturnType< $hyoo_password['title'] >
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__tools_hyoo_password_14 = $mol_type_enforce<
+	type $mol_page__tools_hyoo_password_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_hyoo_password_15 = $mol_type_enforce<
-		readonly(any)[]
+	type $mol_page__body_hyoo_password_22 = $mol_type_enforce<
+		ReturnType< $hyoo_password['fields'] >
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_hint__dictionary_hyoo_password_16 = $mol_type_enforce<
+	type $mol_hint__dictionary_hyoo_password_23 = $mol_type_enforce<
 		({ 
 			'no_store': string,
 			'offline': string,
+			'strong': string,
 			'formula': string,
 		}) 
 		,
@@ -2641,17 +2704,25 @@ declare namespace $ {
 		title( ): string
 		Source( ): $mol_link_source
 		Lights( ): $mol_lights_toggle
+		close( next?: any ): any
+		Close_icon( ): $mol_icon_close
+		Close( ): $mol_button_minor
 		master( next?: string ): string
 		Master( ): $mol_password
 		Master_block( ): $mol_form_field
 		context( next?: string ): string
 		Context( ): $mol_string
+		context_clear( next?: any ): any
+		Clear_icon( ): $mol_icon_trash_can_outline
+		Context_clear( ): $mol_button_minor
+		Context_bar( ): $mol_bar
 		Context_block( ): $mol_form_field
 		password( ): string
 		Password( ): $mol_chip
 		Copy( ): $mol_button_copy
 		Password_bar( ): $mol_bar
 		Password_block( ): $mol_form_field
+		fields( ): readonly(any)[]
 		Page( ): $mol_page
 		Hint( ): $mol_hint
 		plugins( ): readonly(any)[]
@@ -2664,7 +2735,10 @@ declare namespace $ {
 declare namespace $.$$ {
     class $hyoo_password extends $.$hyoo_password {
         master(next?: string): string;
+        fields(): $.$mol_form_field[];
         password(): string;
+        context_clear(): void;
+        close(): void;
     }
 }
 

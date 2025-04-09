@@ -5521,6 +5521,17 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_close) = class $mol_icon_close extends ($.$mol_icon) {
+		path(){
+			return "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 	($.$mol_hotkey) = class $mol_hotkey extends ($.$mol_plugin) {
 		keydown(next){
 			if(next !== undefined) return next;
@@ -6288,6 +6299,42 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_trash_can) = class $mol_icon_trash_can extends ($.$mol_icon) {
+		path(){
+			return "M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_trash_can_outline) = class $mol_icon_trash_can_outline extends ($.$mol_icon) {
+		path(){
+			return "M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_bar) = class $mol_bar extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
 	($.$mol_chip) = class $mol_chip extends ($.$mol_view) {
 		sub(){
 			return [(this.title())];
@@ -6438,20 +6485,6 @@ var $;
         $$.$mol_button_copy = $mol_button_copy;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-	($.$mol_bar) = class $mol_bar extends ($.$mol_view) {};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 	($.$mol_scroll) = class $mol_scroll extends ($.$mol_view) {
@@ -7086,6 +7119,21 @@ var $;
 			const obj = new this.$.$mol_lights_toggle();
 			return obj;
 		}
+		close(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Close_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		Close(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_password_Close_hint")));
+			(obj.click) = (next) => ((this.close(next)));
+			(obj.sub) = () => ([(this.Close_icon())]);
+			return obj;
+		}
 		master(next){
 			if(next !== undefined) return next;
 			return "";
@@ -7110,10 +7158,30 @@ var $;
 			(obj.value) = (next) => ((this.context(next)));
 			return obj;
 		}
+		context_clear(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Clear_icon(){
+			const obj = new this.$.$mol_icon_trash_can_outline();
+			return obj;
+		}
+		Context_clear(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$hyoo_password_Context_clear_hint")));
+			(obj.click) = (next) => ((this.context_clear(next)));
+			(obj.sub) = () => ([(this.Clear_icon())]);
+			return obj;
+		}
+		Context_bar(){
+			const obj = new this.$.$mol_bar();
+			(obj.sub) = () => ([(this.Context()), (this.Context_clear())]);
+			return obj;
+		}
 		Context_block(){
 			const obj = new this.$.$mol_form_field();
 			(obj.name) = () => ((this.$.$mol_locale.text("$hyoo_password_Context_block_name")));
-			(obj.Content) = () => ((this.Context()));
+			(obj.Content) = () => ((this.Context_bar()));
 			return obj;
 		}
 		password(){
@@ -7140,15 +7208,22 @@ var $;
 			(obj.Content) = () => ((this.Password_bar()));
 			return obj;
 		}
-		Page(){
-			const obj = new this.$.$mol_page();
-			(obj.title) = () => ((this.title()));
-			(obj.tools) = () => ([(this.Source()), (this.Lights())]);
-			(obj.body) = () => ([
+		fields(){
+			return [
 				(this.Master_block()), 
 				(this.Context_block()), 
 				(this.Password_block())
+			];
+		}
+		Page(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.title()));
+			(obj.tools) = () => ([
+				(this.Source()), 
+				(this.Lights()), 
+				(this.Close())
 			]);
+			(obj.body) = () => ((this.fields()));
 			return obj;
 		}
 		Hint(){
@@ -7156,6 +7231,7 @@ var $;
 			(obj.dictionary) = () => ({
 				"no_store": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_no_store")), 
 				"offline": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_offline")), 
+				"strong": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_strong")), 
 				"formula": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_formula"))
 			});
 			return obj;
@@ -7170,11 +7246,18 @@ var $;
 	($mol_mem(($.$hyoo_password.prototype), "Theme"));
 	($mol_mem(($.$hyoo_password.prototype), "Source"));
 	($mol_mem(($.$hyoo_password.prototype), "Lights"));
+	($mol_mem(($.$hyoo_password.prototype), "close"));
+	($mol_mem(($.$hyoo_password.prototype), "Close_icon"));
+	($mol_mem(($.$hyoo_password.prototype), "Close"));
 	($mol_mem(($.$hyoo_password.prototype), "master"));
 	($mol_mem(($.$hyoo_password.prototype), "Master"));
 	($mol_mem(($.$hyoo_password.prototype), "Master_block"));
 	($mol_mem(($.$hyoo_password.prototype), "context"));
 	($mol_mem(($.$hyoo_password.prototype), "Context"));
+	($mol_mem(($.$hyoo_password.prototype), "context_clear"));
+	($mol_mem(($.$hyoo_password.prototype), "Clear_icon"));
+	($mol_mem(($.$hyoo_password.prototype), "Context_clear"));
+	($mol_mem(($.$hyoo_password.prototype), "Context_bar"));
 	($mol_mem(($.$hyoo_password.prototype), "Context_block"));
 	($mol_mem(($.$hyoo_password.prototype), "Password"));
 	($mol_mem(($.$hyoo_password.prototype), "Copy"));
@@ -7587,12 +7670,31 @@ var $;
             master(next) {
                 return this.$.$mol_state_session.value('master', next) ?? '';
             }
+            fields() {
+                return [
+                    this.Master_block(),
+                    this.Context_block(),
+                    ...(this.master() && this.context()) ? [this.Password_block()] : [],
+                ];
+            }
             password() {
                 const context = $mol_charset_encode(this.context());
                 const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), context);
                 return $mol_base64_encode(sacred.asArray());
             }
+            context_clear() {
+                this.context('');
+                this.Context().focused(true);
+            }
+            close() {
+                this.master('');
+                this.context('');
+                this.$.$mol_dom.close();
+            }
         }
+        __decorate([
+            $mol_mem
+        ], $hyoo_password.prototype, "fields", null);
         __decorate([
             $mol_mem
         ], $hyoo_password.prototype, "password", null);
