@@ -6,6 +6,11 @@ namespace $.$$ {
 		}
 		
 		@ $mol_mem
+		context( next?: string ) {
+			return next ?? ( $mol_dom.document.referrer && new URL( $mol_dom.document.referrer ).hostname || '' )
+		}
+		
+		@ $mol_mem
 		fields() {
 			return [
 				this.Master_block(),
