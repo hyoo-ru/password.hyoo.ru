@@ -2,11 +2,13 @@ namespace $.$$ {
 	
 	$mol_style_define( $hyoo_password, {
 		
+		flex: {
+			direction: 'column',
+		},
+		
+		padding: $mol_gap.block,
+		
 		Page: {
-			
-			flex: {
-				basis: `30rem`,
-			},
 			
 			margin: 'auto',
 			

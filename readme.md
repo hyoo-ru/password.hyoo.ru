@@ -2,4 +2,7 @@
 
 Unique strong password generator.
 
-Formula: `BASE64( SHA-1( master_password + salt ) )`
+- All passwords don't stored anywhere
+- Working instantly offline
+
+Formula: `BASE64( SHA-1( master + "\n" + context ) )`
