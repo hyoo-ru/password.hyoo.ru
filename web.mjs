@@ -6707,8 +6707,7 @@ var $;
 			(obj.dictionary) = () => ({
 				"no_store": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_no_store")), 
 				"offline": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_offline")), 
-				"strong": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_strong")), 
-				"formula": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_formula"))
+				"strong": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_strong"))
 			});
 			return obj;
 		}

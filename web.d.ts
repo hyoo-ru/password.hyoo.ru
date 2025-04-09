@@ -2584,7 +2584,6 @@ declare namespace $ {
 			'no_store': string,
 			'offline': string,
 			'strong': string,
-			'formula': string,
 		}) 
 		,
 		ReturnType< $mol_hint['dictionary'] >
