@@ -2,7 +2,7 @@
 	"$hyoo_password_Context_block_name": "URL, Domain or Unique app name",
 	"$hyoo_password_Master_block_name": "Master password for all generations",
 	"$hyoo_password_Page_title": "Password generator",
-	"$hyoo_password_Password_block_name": "Unique password",
+	"$hyoo_password_Password_block_name": "Unique strong password",
 	"$mol_lights_toggle_hint": "Toggle lights",
 	"$mol_link_source_hint": "Source code"
 }
