@@ -26,6 +26,12 @@ namespace $.$$ {
 			
 		},
 		
+		Password_bar: {
+			justify: {
+				content: 'space-between',
+			},
+		},
+		
 		Copy: {
 			font: {
 				family: 'monospace',
