@@ -11,6 +11,12 @@ namespace $.$$ {
 		}
 		
 		@ $mol_mem
+		index( next = 0 ) {
+			this.context()
+			return Math.max( 0, next )
+		}
+		
+		@ $mol_mem
 		fields() {
 			return [
 				this.Master_block(),
@@ -21,9 +27,9 @@ namespace $.$$ {
 		
 		@ $mol_mem
 		password() {
-			const context = $mol_charset_encode( this.context() )
-			const sacred = $mol_wire_sync( this.$ ).$mol_crypto_sacred_pass( this.master(), context )
-			return $mol_base64_encode( sacred.asArray() )
+			const salt = $mol_charset_encode( this.context() + '\n' + this.index() )
+			const sacred = $mol_wire_sync( this.$ ).$mol_crypto_sacred_pass( this.master(), salt )
+			return $mol_base64_encode( sacred.asArray().slice( 0, -2 ) )
 		}
 		
 		context_clear() {

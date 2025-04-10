@@ -26,7 +26,7 @@ namespace $.$$ {
 			
 		},
 		
-		Password: {
+		Copy: {
 			font: {
 				family: 'monospace',
 			},
