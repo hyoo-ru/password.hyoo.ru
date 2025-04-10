@@ -2179,18 +2179,6 @@ declare namespace $ {
 
 //# sourceMappingURL=bar.view.tree.d.ts.map
 declare namespace $ {
-
-	export class $mol_chip extends $mol_view {
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=chip.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $ {
     type $mol_blob = Blob;
     let $mol_blob: {
         prototype: Blob;
@@ -2260,6 +2248,97 @@ declare namespace $.$$ {
         attachments(): ClipboardItem[];
         click(event?: Event): void;
     }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_chevron extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=chevron.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_chevron_left extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=left.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_chevron_right extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=right.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_button_minor__hint_mol_paginator_1 = $mol_type_enforce<
+		ReturnType< $mol_paginator['backward_hint'] >
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_mol_paginator_2 = $mol_type_enforce<
+		ReturnType< $mol_paginator['backward'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_mol_paginator_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_view__sub_mol_paginator_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_button_minor__hint_mol_paginator_5 = $mol_type_enforce<
+		ReturnType< $mol_paginator['forward_hint'] >
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_mol_paginator_6 = $mol_type_enforce<
+		ReturnType< $mol_paginator['forward'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_mol_paginator_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	export class $mol_paginator extends $mol_bar {
+		backward_hint( ): string
+		backward( next?: any ): any
+		Backward_icon( ): $mol_icon_chevron_left
+		Backward( ): $mol_button_minor
+		value( next?: number ): number
+		Value( ): $mol_view
+		forward_hint( ): string
+		forward( next?: any ): any
+		Forward_icon( ): $mol_icon_chevron_right
+		Forward( ): $mol_button_minor
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=paginator.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_paginator extends $.$mol_paginator {
+        backward(event: Event): void;
+        forward(event: Event): void;
+    }
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -2678,52 +2757,57 @@ declare namespace $ {
 		,
 		ReturnType< $mol_form_field['Content'] >
 	>
-	type $mol_chip__title_hyoo_password_16 = $mol_type_enforce<
-		ReturnType< $hyoo_password['password'] >
-		,
-		ReturnType< $mol_chip['title'] >
-	>
-	type $mol_button_copy__text_hyoo_password_17 = $mol_type_enforce<
+	type $mol_button_copy__text_hyoo_password_16 = $mol_type_enforce<
 		ReturnType< $hyoo_password['password'] >
 		,
 		ReturnType< $mol_button_copy['text'] >
 	>
-	type $mol_bar__sub_hyoo_password_18 = $mol_type_enforce<
+	type $mol_button_copy__title_hyoo_password_17 = $mol_type_enforce<
+		ReturnType< $hyoo_password['password'] >
+		,
+		ReturnType< $mol_button_copy['title'] >
+	>
+	type $mol_paginator__value_hyoo_password_18 = $mol_type_enforce<
+		ReturnType< $hyoo_password['index'] >
+		,
+		ReturnType< $mol_paginator['value'] >
+	>
+	type $mol_bar__sub_hyoo_password_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_bar['sub'] >
 	>
-	type $mol_form_field__name_hyoo_password_19 = $mol_type_enforce<
+	type $mol_form_field__name_hyoo_password_20 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_form_field['name'] >
 	>
-	type $mol_form_field__Content_hyoo_password_20 = $mol_type_enforce<
+	type $mol_form_field__Content_hyoo_password_21 = $mol_type_enforce<
 		ReturnType< $hyoo_password['Password_bar'] >
 		,
 		ReturnType< $mol_form_field['Content'] >
 	>
-	type $mol_page__title_hyoo_password_21 = $mol_type_enforce<
+	type $mol_page__title_hyoo_password_22 = $mol_type_enforce<
 		ReturnType< $hyoo_password['title'] >
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__Logo_hyoo_password_22 = $mol_type_enforce<
+	type $mol_page__Logo_hyoo_password_23 = $mol_type_enforce<
 		ReturnType< $hyoo_password['Logo'] >
 		,
 		ReturnType< $mol_page['Logo'] >
 	>
-	type $mol_page__tools_hyoo_password_23 = $mol_type_enforce<
+	type $mol_page__tools_hyoo_password_24 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_hyoo_password_24 = $mol_type_enforce<
+	type $mol_page__body_hyoo_password_25 = $mol_type_enforce<
 		ReturnType< $hyoo_password['fields'] >
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_hint__dictionary_hyoo_password_25 = $mol_type_enforce<
+	type $mol_hint__dictionary_hyoo_password_26 = $mol_type_enforce<
 		({ 
 			'no_store': string,
 			'offline': string,
@@ -2752,8 +2836,9 @@ declare namespace $ {
 		Context_bar( ): $mol_bar
 		Context_block( ): $mol_form_field
 		password( ): string
-		Password( ): $mol_chip
 		Copy( ): $mol_button_copy
+		index( next?: number ): number
+		Index( ): $mol_paginator
 		Password_bar( ): $mol_bar
 		Password_block( ): $mol_form_field
 		fields( ): readonly(any)[]
@@ -2770,6 +2855,7 @@ declare namespace $.$$ {
     class $hyoo_password extends $.$hyoo_password {
         master(next?: string): string;
         context(next?: string): string;
+        index(next?: number): number;
         fields(): $.$mol_form_field[];
         password(): string;
         context_clear(): void;

@@ -11,5 +11,7 @@
 	"$mol_hint_hint_close": "Скрыть",
 	"$mol_hint_hint_open": "Подсказка",
 	"$mol_lights_toggle_hint": "Переключить освещение",
-	"$mol_link_source_hint": "Исходные коды"
+	"$mol_link_source_hint": "Исходные коды",
+	"$mol_paginator_backward_hint": "Назад",
+	"$mol_paginator_forward_hint": "Вперёд"
 }

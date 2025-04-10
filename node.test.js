@@ -6400,35 +6400,6 @@ var $;
 "use strict";
 
 ;
-	($.$mol_chip) = class $mol_chip extends ($.$mol_view) {
-		sub(){
-			return [(this.title())];
-		}
-	};
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        $mol_style_define($mol_chip, {
-            padding: $mol_gap.text,
-            border: {
-                radius: $mol_gap.round,
-            },
-            background: {
-                color: $mol_theme.card,
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 "use strict";
 var $;
 (function ($) {
@@ -6549,6 +6520,138 @@ var $;
         ], $mol_button_copy.prototype, "attachments", null);
         $$.$mol_button_copy = $mol_button_copy;
     })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_chevron) = class $mol_icon_chevron extends ($.$mol_icon) {
+		path(){
+			return "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_chevron_left) = class $mol_icon_chevron_left extends ($.$mol_icon) {
+		path(){
+			return "M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_chevron_right) = class $mol_icon_chevron_right extends ($.$mol_icon) {
+		path(){
+			return "M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_paginator) = class $mol_paginator extends ($.$mol_bar) {
+		backward_hint(){
+			return (this.$.$mol_locale.text("$mol_paginator_backward_hint"));
+		}
+		backward(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Backward_icon(){
+			const obj = new this.$.$mol_icon_chevron_left();
+			return obj;
+		}
+		Backward(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.backward_hint()));
+			(obj.click) = (next) => ((this.backward(next)));
+			(obj.sub) = () => ([(this.Backward_icon())]);
+			return obj;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		Value(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.value())]);
+			return obj;
+		}
+		forward_hint(){
+			return (this.$.$mol_locale.text("$mol_paginator_forward_hint"));
+		}
+		forward(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Forward_icon(){
+			const obj = new this.$.$mol_icon_chevron_right();
+			return obj;
+		}
+		Forward(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.forward_hint()));
+			(obj.click) = (next) => ((this.forward(next)));
+			(obj.sub) = () => ([(this.Forward_icon())]);
+			return obj;
+		}
+		sub(){
+			return [
+				(this.Backward()), 
+				(this.Value()), 
+				(this.Forward())
+			];
+		}
+	};
+	($mol_mem(($.$mol_paginator.prototype), "backward"));
+	($mol_mem(($.$mol_paginator.prototype), "Backward_icon"));
+	($mol_mem(($.$mol_paginator.prototype), "Backward"));
+	($mol_mem(($.$mol_paginator.prototype), "value"));
+	($mol_mem(($.$mol_paginator.prototype), "Value"));
+	($mol_mem(($.$mol_paginator.prototype), "forward"));
+	($mol_mem(($.$mol_paginator.prototype), "Forward_icon"));
+	($mol_mem(($.$mol_paginator.prototype), "Forward"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_paginator extends $.$mol_paginator {
+            backward(event) {
+                if (event.defaultPrevented)
+                    return;
+                event.preventDefault();
+                this.value(this.value() - 1);
+            }
+            forward(event) {
+                if (event.defaultPrevented)
+                    return;
+                event.preventDefault();
+                this.value(this.value() + 1);
+            }
+        }
+        $$.$mol_paginator = $mol_paginator;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/paginator/paginator.view.css", "[mol_paginator] {\n\talign-items: flex-start;\n}\n\n[mol_paginator_value] {\n\tpadding: .5rem 0;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -7257,19 +7360,24 @@ var $;
 		password(){
 			return "";
 		}
-		Password(){
-			const obj = new this.$.$mol_chip();
-			(obj.title) = () => ((this.password()));
-			return obj;
-		}
 		Copy(){
 			const obj = new this.$.$mol_button_copy();
 			(obj.text) = () => ((this.password()));
+			(obj.title) = () => ((this.password()));
+			return obj;
+		}
+		index(next){
+			if(next !== undefined) return next;
+			return 0;
+		}
+		Index(){
+			const obj = new this.$.$mol_paginator();
+			(obj.value) = (next) => ((this.index(next)));
 			return obj;
 		}
 		Password_bar(){
 			const obj = new this.$.$mol_bar();
-			(obj.sub) = () => ([(this.Password()), (this.Copy())]);
+			(obj.sub) = () => ([(this.Copy()), (this.Index())]);
 			return obj;
 		}
 		Password_block(){
@@ -7330,8 +7438,9 @@ var $;
 	($mol_mem(($.$hyoo_password.prototype), "Context_clear"));
 	($mol_mem(($.$hyoo_password.prototype), "Context_bar"));
 	($mol_mem(($.$hyoo_password.prototype), "Context_block"));
-	($mol_mem(($.$hyoo_password.prototype), "Password"));
 	($mol_mem(($.$hyoo_password.prototype), "Copy"));
+	($mol_mem(($.$hyoo_password.prototype), "index"));
+	($mol_mem(($.$hyoo_password.prototype), "Index"));
 	($mol_mem(($.$hyoo_password.prototype), "Password_bar"));
 	($mol_mem(($.$hyoo_password.prototype), "Password_block"));
 	($mol_mem(($.$hyoo_password.prototype), "Page"));
@@ -7744,6 +7853,10 @@ var $;
             context(next) {
                 return next ?? ($mol_dom.document.referrer && new URL($mol_dom.document.referrer).hostname || '');
             }
+            index(next = 0) {
+                this.context();
+                return Math.max(0, next);
+            }
             fields() {
                 return [
                     this.Master_block(),
@@ -7752,9 +7865,9 @@ var $;
                 ];
             }
             password() {
-                const context = $mol_charset_encode(this.context());
-                const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), context);
-                return $mol_base64_encode(sacred.asArray());
+                const salt = $mol_charset_encode(this.context() + '\n' + this.index());
+                const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), salt);
+                return $mol_base64_encode(sacred.asArray().slice(0, -2));
             }
             context_clear() {
                 this.context('');
@@ -7769,6 +7882,9 @@ var $;
         __decorate([
             $mol_mem
         ], $hyoo_password.prototype, "context", null);
+        __decorate([
+            $mol_mem
+        ], $hyoo_password.prototype, "index", null);
         __decorate([
             $mol_mem
         ], $hyoo_password.prototype, "fields", null);
@@ -7802,7 +7918,7 @@ var $;
                     shadow: [[0, 0, $mol_gap.block, 0, $mol_style_func.hsla(0, 0, 0, .2)]],
                 },
             },
-            Password: {
+            Copy: {
                 font: {
                     family: 'monospace',
                 },
