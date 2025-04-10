@@ -6730,6 +6730,9 @@ var $;
             flex: {
                 shrink: 1,
             },
+            align: {
+                items: 'flex-start',
+            },
             Icon: {
                 color: $mol_theme.control,
             },
@@ -6762,7 +6765,7 @@ var $;
             }
             sub() {
                 return this.checked()
-                    ? [this.title()]
+                    ? [this.Icon(), this.title()]
                     : [this.Icon()];
             }
             hint() {

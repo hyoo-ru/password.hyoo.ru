@@ -2,7 +2,7 @@
 	"$hyoo_password_Close_hint": "Clear and close",
 	"$hyoo_password_Context_block_name": "Domain or App name",
 	"$hyoo_password_Context_clear_hint": "Clear",
-	"$hyoo_password_Hint_dictionary_no_store": "All passwords don't stored anywhere",
+	"$hyoo_password_Hint_dictionary_no_store": "Passwords don't stored anywhere",
 	"$hyoo_password_Hint_dictionary_offline": "Working instantly offline",
 	"$hyoo_password_Hint_dictionary_strong": "Master password must be strong",
 	"$hyoo_password_Master_block_name": "Master password",
