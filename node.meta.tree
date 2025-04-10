@@ -84,3 +84,4 @@
 	include \/mol/view/tree/test
 \/hyoo/password
 	include \/mol/offline/install
+	deploy \/hyoo/password/logo/logo.svg

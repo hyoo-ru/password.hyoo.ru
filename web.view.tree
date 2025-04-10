@@ -324,11 +324,11 @@ $hyoo_password $mol_view
 						<= Close_icon $mol_icon_close
 			body <= fields /
 				<= Master_block $mol_form_field
-					name @ \Master password for all generations
+					name @ \Master password
 					Content <= Master $mol_password
 						value? <=> master? \
 				<= Context_block $mol_form_field
-					name @ \Unique domain or application name
+					name @ \Domain or App name
 					Content <= Context_bar $mol_bar sub /
 						<= Context $mol_string
 							value? <=> context? \
@@ -348,4 +348,4 @@ $hyoo_password $mol_view
 			dictionary *
 				no_store @ \All passwords don't stored anywhere
 				offline @ \Working instantly offline
-				strong @ \Use strongest master password
+				strong @ \Master password must be strong
