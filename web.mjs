@@ -6140,6 +6140,167 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_help) = class $mol_icon_help extends ($.$mol_icon) {
+		path(){
+			return "M10,19H13V22H10V19M12,2C17.35,2.22 19.68,7.62 16.5,11.67C15.67,12.67 14.33,13.33 13.67,14.17C13,15 13,16 13,17H10C10,15.33 10,13.92 10.67,12.92C11.33,11.92 12.67,11.33 13.5,10.67C15.92,8.43 15.32,5.26 12,5A3,3 0 0,0 9,8H6A6,6 0 0,1 12,2Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_help_circle) = class $mol_icon_help_circle extends ($.$mol_icon) {
+		path(){
+			return "M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_help_circle_outline) = class $mol_icon_help_circle_outline extends ($.$mol_icon) {
+		path(){
+			return "M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_hint) = class $mol_hint extends ($.$mol_check) {
+		dictionary(){
+			return {};
+		}
+		Icon(){
+			const obj = new this.$.$mol_icon_help_circle_outline();
+			return obj;
+		}
+		hint_close(){
+			return (this.$.$mol_locale.text("$mol_hint_hint_close"));
+		}
+		hint_open(){
+			return (this.$.$mol_locale.text("$mol_hint_hint_open"));
+		}
+	};
+	($mol_mem(($.$mol_hint.prototype), "Icon"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_array_lottery(list) {
+        return list[Math.floor(Math.random() * list.length)];
+    }
+    $.$mol_array_lottery = $mol_array_lottery;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($mol_hint, {
+            color: $mol_theme.shade,
+            flex: {
+                shrink: 1,
+            },
+            Icon: {
+                color: $mol_theme.control,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_hint extends $.$mol_hint {
+            keys_all() {
+                return Object.keys(this.dictionary());
+            }
+            keys_hidden(next) {
+                return new Set(this.$.$mol_state_local.value(`${this}`, next) ?? []);
+            }
+            keys_allowed() {
+                const hidden = this.keys_hidden();
+                return this.keys_all().filter(key => !hidden.has(key));
+            }
+            key_picked() {
+                return $mol_array_lottery(this.keys_allowed());
+            }
+            title() {
+                return this.dictionary()[this.key_picked()] ?? '';
+            }
+            sub() {
+                return this.checked()
+                    ? [this.title()]
+                    : [this.Icon()];
+            }
+            hint() {
+                return this.checked()
+                    ? this.hint_close()
+                    : this.hint_open();
+            }
+            checked(next) {
+                if (next === undefined)
+                    return this.keys_allowed().length > 0;
+                if (next) {
+                    if (this.keys_allowed().length === 0) {
+                        this.keys_hidden([]);
+                    }
+                }
+                else {
+                    this.keys_hidden([
+                        ...this.keys_hidden(),
+                        this.key_picked(),
+                    ]);
+                }
+                return next;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "keys_all", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "keys_hidden", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "keys_allowed", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "key_picked", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "title", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "sub", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "hint", null);
+        __decorate([
+            $mol_mem
+        ], $mol_hint.prototype, "checked", null);
+        $$.$mol_hint = $mol_hint;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_scroll) = class $mol_scroll extends ($.$mol_view) {
 		tabindex(){
 			return -1;
@@ -6487,167 +6648,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_icon_help) = class $mol_icon_help extends ($.$mol_icon) {
-		path(){
-			return "M10,19H13V22H10V19M12,2C17.35,2.22 19.68,7.62 16.5,11.67C15.67,12.67 14.33,13.33 13.67,14.17C13,15 13,16 13,17H10C10,15.33 10,13.92 10.67,12.92C11.33,11.92 12.67,11.33 13.5,10.67C15.92,8.43 15.32,5.26 12,5A3,3 0 0,0 9,8H6A6,6 0 0,1 12,2Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_help_circle) = class $mol_icon_help_circle extends ($.$mol_icon) {
-		path(){
-			return "M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_help_circle_outline) = class $mol_icon_help_circle_outline extends ($.$mol_icon) {
-		path(){
-			return "M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_hint) = class $mol_hint extends ($.$mol_check) {
-		dictionary(){
-			return {};
-		}
-		Icon(){
-			const obj = new this.$.$mol_icon_help_circle_outline();
-			return obj;
-		}
-		hint_close(){
-			return (this.$.$mol_locale.text("$mol_hint_hint_close"));
-		}
-		hint_open(){
-			return (this.$.$mol_locale.text("$mol_hint_hint_open"));
-		}
-	};
-	($mol_mem(($.$mol_hint.prototype), "Icon"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_array_lottery(list) {
-        return list[Math.floor(Math.random() * list.length)];
-    }
-    $.$mol_array_lottery = $mol_array_lottery;
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        $mol_style_define($mol_hint, {
-            color: $mol_theme.shade,
-            flex: {
-                shrink: 1,
-            },
-            Icon: {
-                color: $mol_theme.control,
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_hint extends $.$mol_hint {
-            keys_all() {
-                return Object.keys(this.dictionary());
-            }
-            keys_hidden(next) {
-                return new Set(this.$.$mol_state_local.value(`${this}`, next) ?? []);
-            }
-            keys_allowed() {
-                const hidden = this.keys_hidden();
-                return this.keys_all().filter(key => !hidden.has(key));
-            }
-            key_picked() {
-                return $mol_array_lottery(this.keys_allowed());
-            }
-            title() {
-                return this.dictionary()[this.key_picked()] ?? '';
-            }
-            sub() {
-                return this.checked()
-                    ? [this.title()]
-                    : [this.Icon()];
-            }
-            hint() {
-                return this.checked()
-                    ? this.hint_close()
-                    : this.hint_open();
-            }
-            checked(next) {
-                if (next === undefined)
-                    return this.keys_allowed().length > 0;
-                if (next) {
-                    if (this.keys_allowed().length === 0) {
-                        this.keys_hidden([]);
-                    }
-                }
-                else {
-                    this.keys_hidden([
-                        ...this.keys_hidden(),
-                        this.key_picked(),
-                    ]);
-                }
-                return next;
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "keys_all", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "keys_hidden", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "keys_allowed", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "key_picked", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "title", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "sub", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "hint", null);
-        __decorate([
-            $mol_mem
-        ], $mol_hint.prototype, "checked", null);
-        $$.$mol_hint = $mol_hint;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 	($.$mol_row) = class $mol_row extends ($.$mol_view) {};
 
 
@@ -6871,11 +6871,21 @@ var $;
 			(obj.Content) = () => ((this.Password_bar()));
 			return obj;
 		}
+		Hint(){
+			const obj = new this.$.$mol_hint();
+			(obj.dictionary) = () => ({
+				"no_store": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_no_store")), 
+				"offline": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_offline")), 
+				"strong": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_strong"))
+			});
+			return obj;
+		}
 		fields(){
 			return [
 				(this.Master_block()), 
 				(this.Context_block()), 
-				(this.Password_block())
+				(this.Password_block()), 
+				(this.Hint())
 			];
 		}
 		Page(){
@@ -6890,20 +6900,11 @@ var $;
 			(obj.body) = () => ((this.fields()));
 			return obj;
 		}
-		Hint(){
-			const obj = new this.$.$mol_hint();
-			(obj.dictionary) = () => ({
-				"no_store": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_no_store")), 
-				"offline": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_offline")), 
-				"strong": (this.$.$mol_locale.text("$hyoo_password_Hint_dictionary_strong"))
-			});
-			return obj;
-		}
 		plugins(){
 			return [(this.Theme())];
 		}
 		sub(){
-			return [(this.Page()), (this.Hint())];
+			return [(this.Page())];
 		}
 	};
 	($mol_mem(($.$hyoo_password.prototype), "Theme"));
@@ -6928,8 +6929,8 @@ var $;
 	($mol_mem(($.$hyoo_password.prototype), "Index"));
 	($mol_mem(($.$hyoo_password.prototype), "Password_bar"));
 	($mol_mem(($.$hyoo_password.prototype), "Password_block"));
-	($mol_mem(($.$hyoo_password.prototype), "Page"));
 	($mol_mem(($.$hyoo_password.prototype), "Hint"));
+	($mol_mem(($.$hyoo_password.prototype), "Page"));
 
 
 ;
@@ -7442,7 +7443,9 @@ var $;
                 return [
                     this.Master_block(),
                     this.Context_block(),
-                    ...(this.master() && this.context()) ? [this.Password_block()] : [],
+                    ...(this.master() && this.context())
+                        ? [this.Password_block()]
+                        : [this.Hint()],
                 ];
             }
             password() {
@@ -7483,12 +7486,12 @@ var $;
     var $$;
     (function ($$) {
         $mol_style_define($hyoo_password, {
-            flex: {
-                direction: 'column',
-            },
             padding: $mol_gap.block,
             Page: {
                 margin: 'auto',
+                flex: {
+                    basis: `25rem`,
+                },
                 background: {
                     color: $mol_theme.card,
                 },
@@ -7507,6 +7510,11 @@ var $;
             Copy: {
                 font: {
                     family: 'monospace',
+                },
+            },
+            Hint: {
+                margin: {
+                    top: `2rem`,
                 },
             },
         });

@@ -2229,6 +2229,65 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $mol_icon_help extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=help.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_help_circle extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=circle.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_help_circle_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+    function $mol_array_lottery<Value>(list: readonly Value[]): Value;
+}
+
+declare namespace $ {
+
+	export class $mol_hint extends $mol_check {
+		dictionary( ): Record<string, any>
+		Icon( ): $mol_icon_help_circle_outline
+		hint_close( ): string
+		hint_open( ): string
+	}
+	
+}
+
+//# sourceMappingURL=hint.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $.$$ {
+    class $mol_hint extends $.$mol_hint {
+        keys_all(): string[];
+        keys_hidden(next?: string[]): Set<string>;
+        keys_allowed(): string[];
+        key_picked(): string;
+        title(): any;
+        sub(): any[];
+        hint(): string;
+        checked(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+
 	export class $mol_scroll extends $mol_view {
 		tabindex( ): number
 		event_scroll( next?: any ): any
@@ -2342,65 +2401,6 @@ declare namespace $ {
 
 //# sourceMappingURL=page.view.tree.d.ts.map
 declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	export class $mol_icon_help extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=help.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_help_circle extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=circle.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_help_circle_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-    function $mol_array_lottery<Value>(list: readonly Value[]): Value;
-}
-
-declare namespace $ {
-
-	export class $mol_hint extends $mol_check {
-		dictionary( ): Record<string, any>
-		Icon( ): $mol_icon_help_circle_outline
-		hint_close( ): string
-		hint_open( ): string
-	}
-	
-}
-
-//# sourceMappingURL=hint.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $.$$ {
-    class $mol_hint extends $.$mol_hint {
-        keys_all(): string[];
-        keys_hidden(next?: string[]): Set<string>;
-        keys_allowed(): string[];
-        key_picked(): string;
-        title(): any;
-        sub(): any[];
-        hint(): string;
-        checked(next?: boolean): boolean;
-    }
 }
 
 declare namespace $ {
@@ -2677,27 +2677,7 @@ declare namespace $ {
 		,
 		ReturnType< $mol_form_field['Content'] >
 	>
-	type $mol_page__title_hyoo_password_22 = $mol_type_enforce<
-		ReturnType< $hyoo_password['title'] >
-		,
-		ReturnType< $mol_page['title'] >
-	>
-	type $mol_page__Logo_hyoo_password_23 = $mol_type_enforce<
-		ReturnType< $hyoo_password['Logo'] >
-		,
-		ReturnType< $mol_page['Logo'] >
-	>
-	type $mol_page__tools_hyoo_password_24 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['tools'] >
-	>
-	type $mol_page__body_hyoo_password_25 = $mol_type_enforce<
-		ReturnType< $hyoo_password['fields'] >
-		,
-		ReturnType< $mol_page['body'] >
-	>
-	type $mol_hint__dictionary_hyoo_password_26 = $mol_type_enforce<
+	type $mol_hint__dictionary_hyoo_password_22 = $mol_type_enforce<
 		({ 
 			'no_store': string,
 			'offline': string,
@@ -2705,6 +2685,26 @@ declare namespace $ {
 		}) 
 		,
 		ReturnType< $mol_hint['dictionary'] >
+	>
+	type $mol_page__title_hyoo_password_23 = $mol_type_enforce<
+		ReturnType< $hyoo_password['title'] >
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__Logo_hyoo_password_24 = $mol_type_enforce<
+		ReturnType< $hyoo_password['Logo'] >
+		,
+		ReturnType< $mol_page['Logo'] >
+	>
+	type $mol_page__tools_hyoo_password_25 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['tools'] >
+	>
+	type $mol_page__body_hyoo_password_26 = $mol_type_enforce<
+		ReturnType< $hyoo_password['fields'] >
+		,
+		ReturnType< $mol_page['body'] >
 	>
 	export class $hyoo_password extends $mol_view {
 		Theme( ): $mol_theme_auto
@@ -2731,9 +2731,9 @@ declare namespace $ {
 		Index( ): $mol_paginator
 		Password_bar( ): $mol_bar
 		Password_block( ): $mol_form_field
+		Hint( ): $mol_hint
 		fields( ): readonly(any)[]
 		Page( ): $mol_page
-		Hint( ): $mol_hint
 		plugins( ): readonly(any)[]
 		sub( ): readonly(any)[]
 	}
@@ -2746,7 +2746,7 @@ declare namespace $.$$ {
         master(next?: string): string;
         context(next?: string): string;
         index(next?: number): number;
-        fields(): $.$mol_form_field[];
+        fields(): ($.$mol_form_field | $.$mol_hint)[];
         password(): string;
         context_clear(): void;
         close(): void;
