@@ -7873,7 +7873,7 @@ var $;
             password() {
                 const salt = $mol_charset_encode(this.context() + '\n' + this.index());
                 const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), salt);
-                return $mol_base64_encode(sacred.asArray().slice(0, -2));
+                return $mol_base64_encode(sacred.asArray().slice(1, -1));
             }
             context_clear() {
                 this.context('');
