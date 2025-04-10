@@ -2,15 +2,15 @@ namespace $.$$ {
 	
 	$mol_style_define( $hyoo_password, {
 		
-		flex: {
-			direction: 'column',
-		},
-		
 		padding: $mol_gap.block,
 		
 		Page: {
 			
 			margin: 'auto',
+			
+			flex: {
+				basis: `25rem`,
+			},
 			
 			background: {
 				color: $mol_theme.card,
@@ -35,6 +35,12 @@ namespace $.$$ {
 		Copy: {
 			font: {
 				family: 'monospace',
+			},
+		},
+		
+		Hint: {
+			margin: {
+				top: `2rem`,
 			},
 		},
 		

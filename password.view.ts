@@ -21,7 +21,9 @@ namespace $.$$ {
 			return [
 				this.Master_block(),
 				this.Context_block(),
-				... ( this.master() && this.context() ) ? [ this.Password_block() ] : [],
+				... ( this.master() && this.context() )
+					? [ this.Password_block() ]
+					: [ this.Hint() ],
 			]
 		}
 		
