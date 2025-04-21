@@ -2653,10 +2653,10 @@ declare namespace $ {
 		,
 		ReturnType< $mol_button_copy['text'] >
 	>
-	type $mol_button_copy__title_hyoo_password_17 = $mol_type_enforce<
+	type $mol_password__value_hyoo_password_17 = $mol_type_enforce<
 		ReturnType< $hyoo_password['password'] >
 		,
-		ReturnType< $mol_button_copy['title'] >
+		ReturnType< $mol_password['value'] >
 	>
 	type $mol_paginator__value_hyoo_password_18 = $mol_type_enforce<
 		ReturnType< $hyoo_password['index'] >
@@ -2728,6 +2728,7 @@ declare namespace $ {
 		Context_block( ): $mol_form_field
 		password( ): string
 		Copy( ): $mol_button_copy
+		Password( ): $mol_password
 		index( next?: number ): number
 		Index( ): $mol_paginator
 		Password_bar( ): $mol_bar

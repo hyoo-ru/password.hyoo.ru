@@ -6862,7 +6862,11 @@ var $;
 		Copy(){
 			const obj = new this.$.$mol_button_copy();
 			(obj.text) = () => ((this.password()));
-			(obj.title) = () => ((this.password()));
+			return obj;
+		}
+		Password(){
+			const obj = new this.$.$mol_password();
+			(obj.value) = () => ((this.password()));
 			return obj;
 		}
 		index(next){
@@ -6876,7 +6880,11 @@ var $;
 		}
 		Password_bar(){
 			const obj = new this.$.$mol_bar();
-			(obj.sub) = () => ([(this.Copy()), (this.Index())]);
+			(obj.sub) = () => ([
+				(this.Copy()), 
+				(this.Password()), 
+				(this.Index())
+			]);
 			return obj;
 		}
 		Password_block(){
@@ -6939,6 +6947,7 @@ var $;
 	($mol_mem(($.$hyoo_password.prototype), "Context_bar"));
 	($mol_mem(($.$hyoo_password.prototype), "Context_block"));
 	($mol_mem(($.$hyoo_password.prototype), "Copy"));
+	($mol_mem(($.$hyoo_password.prototype), "Password"));
 	($mol_mem(($.$hyoo_password.prototype), "index"));
 	($mol_mem(($.$hyoo_password.prototype), "Index"));
 	($mol_mem(($.$hyoo_password.prototype), "Password_bar"));
