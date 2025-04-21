@@ -7963,6 +7963,11 @@ var $;
                     family: 'monospace',
                 },
             },
+            Password: {
+                flex: {
+                    shrink: 1,
+                },
+            },
             Hint: {
                 margin: {
                     top: `2rem`,
