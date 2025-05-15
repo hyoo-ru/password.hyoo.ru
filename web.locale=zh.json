@@ -1,0 +1,11 @@
+{
+	"$hyoo_password_Close_hint": "清除并关闭",
+	"$hyoo_password_Context_block_name": "域名或应用程序名称",
+	"$hyoo_password_Context_clear_hint": "清除",
+	"$hyoo_password_Hint_dictionary_no_store": "密码不存储在任何地方",
+	"$hyoo_password_Hint_dictionary_offline": "离线时立即生效",
+	"$hyoo_password_Hint_dictionary_strong": "主密码必须很强",
+	"$hyoo_password_Master_block_name": "主密码",
+	"$hyoo_password_Password_block_name": "唯一强密码",
+	"$hyoo_password_title": "密码生成器"
+}
