@@ -10,5 +10,5 @@ For maximum security:
 
 - Fork this repository.
 - Remove [everyday deploy](.github/workflows/hyoo_password.yml#L10).
-- Make secority audit.
+- Make security audit.
 - Deploy bundle from `gh-pages` branch to your host.
