@@ -1,6 +1,6 @@
 {
 	"short_name": "Password",
-	"name": "$hyoo_password",
+	"name": "Hyper Password",
 	"icons": [
 		{
 			"src": "../../hyoo/password/logo/logo.png",
