@@ -1246,7 +1246,7 @@ declare namespace $ {
         protected copy(to: string): void;
         protected drop(): void;
         protected read(): Uint8Array<ArrayBuffer>;
-        protected write(buffer: Uint8Array): undefined;
+        protected write(buffer: Uint8Array<ArrayBuffer>): undefined;
         protected kids(): this[];
         resolve(path: string): this;
         relate(base?: $mol_file): string;
@@ -2593,11 +2593,11 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_base64_encode(src: string | Uint8Array): string;
+    function $mol_base64_encode(src: string | Uint8Array<ArrayBuffer>): string;
 }
 
 declare namespace $ {
-    function $mol_base64_encode_node(str: string | Uint8Array): string;
+    function $mol_base64_encode_node(str: string | Uint8Array<ArrayBuffer>): string;
 }
 
 declare namespace $ {
@@ -2609,7 +2609,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_base64_ae_encode(buffer: Uint8Array): string;
+    function $mol_base64_ae_encode(buffer: Uint8Array<ArrayBuffer>): string;
     function $mol_base64_ae_decode(str: string): Uint8Array<ArrayBuffer>;
 }
 
@@ -2646,7 +2646,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_base64_url_encode(buffer: Uint8Array): string;
+    function $mol_base64_url_encode(buffer: Uint8Array<ArrayBuffer>): string;
     function $mol_base64_url_decode(str: string): Uint8Array<ArrayBuffer>;
 }
 
@@ -2655,7 +2655,8 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_crypto_sacred extends $mol_buffer {
+    type BufferSource = ArrayBufferView<ArrayBuffer> | ArrayBuffer;
+    export class $mol_crypto_sacred extends $mol_buffer {
         static size: 16;
         static make(): $mol_crypto_sacred;
         static from<This extends typeof $mol_buffer>(this: This, serial: string | ArrayBufferView<ArrayBuffer>): InstanceType<This>;
@@ -2670,13 +2671,14 @@ declare namespace $ {
         }>;
         encrypt(open: BufferSource, salt: BufferSource): Promise<Uint8Array<ArrayBuffer>>;
         decrypt(closed: BufferSource, salt: BufferSource): Promise<Uint8Array<ArrayBuffer>>;
-        close(sacred: $mol_crypto_sacred, salt: BufferSource): Promise<Uint8Array<ArrayBuffer>>;
-        open(buf: Uint8Array, salt: BufferSource): Promise<$mol_crypto_sacred>;
+        close(sacred: DataView<ArrayBuffer>, salt: BufferSource): Promise<Uint8Array<ArrayBuffer>>;
+        open(buf: Uint8Array<ArrayBuffer>, salt: BufferSource): Promise<Uint8Array<ArrayBuffer>>;
     }
+    export {};
 }
 
 declare namespace $ {
-    function $mol_crypto_sacred_pass(pass: string, salt: Uint8Array): Promise<$mol_crypto_sacred>;
+    function $mol_crypto_sacred_pass(pass: string, salt: Uint8Array<ArrayBuffer>): Promise<$mol_crypto_sacred>;
 }
 
 declare namespace $ {
