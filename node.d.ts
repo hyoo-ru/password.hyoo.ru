@@ -756,74 +756,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    const $mol_theme: Record<"image" | "line" | "text" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "field" | "spirit", $mol_style_func<"var", unknown>>;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    let $mol_gap: Record<"text" | "space" | "blur" | "block" | "round", $mol_style_func<"var", unknown>>;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    function $mol_dom_render_children(el: Element | DocumentFragment, childNodes: NodeList | Array<Node | string | null>): void;
-}
-
-declare namespace $ {
-    type $mol_type_partial_deep<Val> = Val extends object ? Val extends Function ? Val : {
-        [field in keyof Val]?: $mol_type_partial_deep<Val[field]> | undefined;
-    } : Val;
-}
-
-declare namespace $ {
-    let $mol_jsx_prefix: string;
-    let $mol_jsx_crumbs: string;
-    let $mol_jsx_booked: null | Set<string>;
-    let $mol_jsx_document: $mol_jsx.JSX.ElementClass['ownerDocument'];
-    const $mol_jsx_frag = "";
-    function $mol_jsx<Props extends $mol_jsx.JSX.IntrinsicAttributes, Children extends Array<Node | string>>(Elem: string | ((props: Props, ...children: Children) => Element), props: Props, ...childNodes: Children): Element | DocumentFragment;
-    namespace $mol_jsx.JSX {
-        interface Element extends HTMLElement {
-            class?: string;
-        }
-        interface ElementClass {
-            attributes: {};
-            ownerDocument: Pick<Document, 'getElementById' | 'createElementNS' | 'createDocumentFragment'>;
-            childNodes: Array<Node | string>;
-            valueOf(): Element;
-        }
-        type OrString<Dict> = {
-            [key in keyof Dict]: Dict[key] | string;
-        };
-        type IntrinsicElements = {
-            [key in keyof ElementTagNameMap]?: $.$mol_type_partial_deep<OrString<Element & IntrinsicAttributes & ElementTagNameMap[key]>>;
-        };
-        interface IntrinsicAttributes {
-            id?: string;
-            xmlns?: string;
-        }
-        interface ElementAttributesProperty {
-            attributes: {};
-        }
-        interface ElementChildrenAttribute {
-        }
-    }
-}
-
-declare namespace $ {
-    class $mol_window extends $mol_object {
-        static size(): {
-            width: number;
-            height: number;
-        };
-    }
-}
-
-declare namespace $ {
     const $mol_key_store: WeakMap<object, string>;
     function $mol_key<Value>(value: Value): string;
 }
@@ -905,185 +837,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $mol_guard_defined<T>(value: T): value is NonNullable<T>;
-}
-
-declare namespace $ {
-    class $mol_view_selection extends $mol_object {
-        static focused(next?: Element[], notify?: 'notify'): Element[];
-    }
-}
-
-declare namespace $ {
-    class $mol_wrapper extends $mol_object2 {
-        static wrap: (task: (...ags: any[]) => any) => (...ags: any[]) => any;
-        static run<Result>(task: () => Result): Result;
-        static func<Args extends any[], Result, Host = void>(func: (this: Host, ...args: Args) => Result): (this: Host, ...args: Args) => Result;
-        static get class(): <Class extends new (...args: any[]) => any>(Class: Class) => Class;
-        static get method(): (obj: object, name: PropertyKey, descr: PropertyDescriptor) => PropertyDescriptor;
-        static get field(): <Host, Field extends keyof Host, Args extends any[], Result>(obj: Host, name: Field, descr: TypedPropertyDescriptor<Result>) => TypedPropertyDescriptor<Result>;
-    }
-}
-
-declare namespace $ {
-    class $mol_memo extends $mol_wrapper {
-        static wrap<This extends object, Value>(task: (this: This, next?: Value) => Value): (this: This, next?: Value) => Value | undefined;
-    }
-}
-
-declare namespace $ {
-    function $mol_dom_qname(name: string): string;
-}
-
-declare namespace $ {
-    function $mol_wire_probe<Value>(task: () => Value, def?: Value): Value | undefined;
-}
-
-declare namespace $ {
-    function $mol_wire_watch(): void;
-}
-
-declare namespace $ {
-    function $mol_const<Value>(value: Value): {
-        (): Value;
-        '()': Value;
-    };
-}
-
-declare namespace $ {
-    function $mol_wire_solid(): void;
-}
-
-declare namespace $ {
-    function $mol_dom_render_attributes(el: Element, attrs: {
-        [key: string]: string | number | boolean | null;
-    }): void;
-}
-
-declare namespace $ {
-    function $mol_dom_render_events(el: Element, events: {
-        [key: string]: (event: Event) => any;
-    }, passive?: boolean): void;
-}
-
-declare namespace $ {
-    function $mol_dom_render_styles(el: Element, styles: {
-        [key: string]: string | number;
-    }): void;
-}
-
-declare namespace $ {
-    function $mol_dom_render_fields(el: Element, fields: {
-        [key: string]: any;
-    }): void;
-}
-
-declare namespace $ {
-    export function $mol_wire_async<Host extends object>(obj: Host): ObjectOrFunctionResultPromisify<Host>;
-    type FunctionResultPromisify<Some> = Some extends (...args: infer Args) => infer Res ? Res extends PromiseLike<unknown> ? Some : (...args: Args) => Promise<Res> : Some;
-    type MethodsResultPromisify<Host extends Object> = {
-        [K in keyof Host]: FunctionResultPromisify<Host[K]>;
-    };
-    type ObjectOrFunctionResultPromisify<Some> = (Some extends (...args: any) => unknown ? FunctionResultPromisify<Some> : {}) & (Some extends Object ? MethodsResultPromisify<Some> : Some);
-    export {};
-}
-
-declare namespace $ {
-    type $mol_type_keys_extract<Input, Upper, Lower = never> = {
-        [Field in keyof Input]: unknown extends Input[Field] ? never : Input[Field] extends never ? never : Input[Field] extends Upper ? [
-            Lower
-        ] extends [Input[Field]] ? Field : never : never;
-    }[keyof Input];
-}
-
-declare namespace $ {
-    type $mol_type_pick<Input, Upper> = Pick<Input, $mol_type_keys_extract<Input, Upper>>;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    type $mol_view_content = $mol_view | Node | string | number | boolean | null;
-    function $mol_view_visible_width(): number;
-    function $mol_view_visible_height(): number;
-    function $mol_view_state_key(suffix: string): string;
-    class $mol_view extends $mol_object {
-        static Root<This extends typeof $mol_view>(this: This, id: number): InstanceType<This>;
-        static roots(): $mol_view[];
-        static auto(): void;
-        title(): string;
-        hint(): string;
-        focused(next?: boolean): boolean;
-        state_key(suffix?: string): string;
-        dom_name(): string;
-        dom_name_space(): string;
-        sub(): readonly $mol_view_content[];
-        sub_visible(): readonly $mol_view_content[];
-        minimal_width(): number;
-        maximal_width(): number;
-        minimal_height(): number;
-        static watchers: Set<$mol_view>;
-        view_rect(): {
-            width: number;
-            height: number;
-            left: number;
-            right: number;
-            top: number;
-            bottom: number;
-        } | null;
-        dom_id(): string;
-        dom_node_external(next?: Element): Element;
-        dom_node(next?: Element): Element;
-        dom_final(): Element | undefined;
-        dom_tree(next?: Element): Element;
-        dom_node_actual(): Element;
-        auto(): any;
-        render(): void;
-        static view_classes(): (typeof $mol_view)[];
-        static _view_names?: Map<string, string[]>;
-        static view_names(suffix: string): string[];
-        view_names_owned(): string[];
-        view_names(): Set<string>;
-        theme(next?: null | string): string | null;
-        attr_static(): {
-            [key: string]: string | number | boolean | null;
-        };
-        attr(): {};
-        style_size(): {
-            [key: string]: string | number;
-        };
-        style(): {
-            [key: string]: string | number;
-        };
-        field(): {
-            [key: string]: any;
-        };
-        event(): {
-            [key: string]: (event: Event) => void;
-        };
-        event_async(): {
-            [x: string]: (event: Event) => Promise<void>;
-        };
-        plugins(): readonly $mol_view[];
-        [$mol_dev_format_head](): any[];
-        view_find(check: (path: $mol_view, text?: string) => boolean, path?: $mol_view[]): Generator<$mol_view[]>;
-        force_render(path: Set<$mol_view>): void;
-        ensure_visible(view: $mol_view, align?: ScrollLogicalPosition): void;
-        bring(): void;
-        destructor(): void;
-    }
-    type $mol_view_all = $mol_type_pick<$, typeof $mol_view>;
-}
-
-declare namespace $ {
-    class $mol_plugin extends $mol_view {
-        dom_node_external(next?: Element): Element;
-        render(): void;
-    }
-}
-
-declare namespace $ {
     let $mol_action: typeof $mol_wire_method;
 }
 
@@ -1120,7 +873,15 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_wire_solid(): void;
+}
+
+declare namespace $ {
     let $mol_mem_persist: typeof $mol_wire_solid;
+}
+
+declare namespace $ {
+    function $mol_wire_probe<Value>(task: () => Value, def?: Value): Value | undefined;
 }
 
 declare namespace $ {
@@ -1149,6 +910,23 @@ declare namespace $ {
         prefix(): string;
         value(key: string, next?: Value): Value | null;
     }
+}
+
+declare namespace $ {
+    function $mol_const<Value>(value: Value): {
+        (): Value;
+        '()': Value;
+    };
+}
+
+declare namespace $ {
+    export function $mol_wire_async<Host extends object>(obj: Host): ObjectOrFunctionResultPromisify<Host>;
+    type FunctionResultPromisify<Some> = Some extends (...args: infer Args) => infer Res ? Res extends PromiseLike<unknown> ? Some : (...args: Args) => Promise<Res> : Some;
+    type MethodsResultPromisify<Host extends Object> = {
+        [K in keyof Host]: FunctionResultPromisify<Host[K]>;
+    };
+    type ObjectOrFunctionResultPromisify<Some> = (Some extends (...args: any) => unknown ? FunctionResultPromisify<Some> : {}) & (Some extends Object ? MethodsResultPromisify<Some> : Some);
+    export {};
 }
 
 declare namespace $ {
@@ -1321,6 +1099,231 @@ declare namespace $ {
 
 declare namespace $ {
     function $mol_lights(this: $, next?: boolean): boolean;
+}
+
+declare namespace $ {
+    const $mol_theme: Record<"image" | "line" | "text" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "field" | "spirit", $mol_style_func<"var", unknown>>;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    let $mol_gap: Record<"text" | "space" | "blur" | "block" | "round", $mol_style_func<"var", unknown>>;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    function $mol_dom_render_children(el: Element | DocumentFragment, childNodes: NodeList | Array<Node | string | null>): void;
+}
+
+declare namespace $ {
+    type $mol_type_partial_deep<Val> = Val extends object ? Val extends Function ? Val : {
+        [field in keyof Val]?: $mol_type_partial_deep<Val[field]> | undefined;
+    } : Val;
+}
+
+declare namespace $ {
+    let $mol_jsx_prefix: string;
+    let $mol_jsx_crumbs: string;
+    let $mol_jsx_booked: null | Set<string>;
+    let $mol_jsx_document: $mol_jsx.JSX.ElementClass['ownerDocument'];
+    const $mol_jsx_frag = "";
+    function $mol_jsx<Props extends $mol_jsx.JSX.IntrinsicAttributes, Children extends Array<Node | string>>(Elem: string | ((props: Props, ...children: Children) => Element), props: Props, ...childNodes: Children): Element | DocumentFragment;
+    namespace $mol_jsx.JSX {
+        interface Element extends HTMLElement {
+            class?: string;
+        }
+        interface ElementClass {
+            attributes: {};
+            ownerDocument: Pick<Document, 'getElementById' | 'createElementNS' | 'createDocumentFragment'>;
+            childNodes: Array<Node | string>;
+            valueOf(): Element;
+        }
+        type OrString<Dict> = {
+            [key in keyof Dict]: Dict[key] | string;
+        };
+        type IntrinsicElements = {
+            [key in keyof ElementTagNameMap]?: $.$mol_type_partial_deep<OrString<Element & IntrinsicAttributes & ElementTagNameMap[key]>>;
+        };
+        interface IntrinsicAttributes {
+            id?: string;
+            xmlns?: string;
+        }
+        interface ElementAttributesProperty {
+            attributes: {};
+        }
+        interface ElementChildrenAttribute {
+        }
+    }
+}
+
+declare namespace $ {
+    class $mol_window extends $mol_object {
+        static size(): {
+            width: number;
+            height: number;
+        };
+    }
+}
+
+declare namespace $ {
+    function $mol_guard_defined<T>(value: T): value is NonNullable<T>;
+}
+
+declare namespace $ {
+    class $mol_view_selection extends $mol_object {
+        static focused(next?: Element[], notify?: 'notify'): Element[];
+    }
+}
+
+declare namespace $ {
+    class $mol_wrapper extends $mol_object2 {
+        static wrap: (task: (...ags: any[]) => any) => (...ags: any[]) => any;
+        static run<Result>(task: () => Result): Result;
+        static func<Args extends any[], Result, Host = void>(func: (this: Host, ...args: Args) => Result): (this: Host, ...args: Args) => Result;
+        static get class(): <Class extends new (...args: any[]) => any>(Class: Class) => Class;
+        static get method(): (obj: object, name: PropertyKey, descr: PropertyDescriptor) => PropertyDescriptor;
+        static get field(): <Host, Field extends keyof Host, Args extends any[], Result>(obj: Host, name: Field, descr: TypedPropertyDescriptor<Result>) => TypedPropertyDescriptor<Result>;
+    }
+}
+
+declare namespace $ {
+    class $mol_memo extends $mol_wrapper {
+        static wrap<This extends object, Value>(task: (this: This, next?: Value) => Value): (this: This, next?: Value) => Value | undefined;
+    }
+}
+
+declare namespace $ {
+    function $mol_dom_qname(name: string): string;
+}
+
+declare namespace $ {
+    function $mol_wire_watch(): void;
+}
+
+declare namespace $ {
+    function $mol_dom_render_attributes(el: Element, attrs: {
+        [key: string]: string | number | boolean | null;
+    }): void;
+}
+
+declare namespace $ {
+    function $mol_dom_render_events(el: Element, events: {
+        [key: string]: (event: Event) => any;
+    }, passive?: boolean): void;
+}
+
+declare namespace $ {
+    function $mol_dom_render_styles(el: Element, styles: {
+        [key: string]: string | number;
+    }): void;
+}
+
+declare namespace $ {
+    function $mol_dom_render_fields(el: Element, fields: {
+        [key: string]: any;
+    }): void;
+}
+
+declare namespace $ {
+    type $mol_type_keys_extract<Input, Upper, Lower = never> = {
+        [Field in keyof Input]: unknown extends Input[Field] ? never : Input[Field] extends never ? never : Input[Field] extends Upper ? [
+            Lower
+        ] extends [Input[Field]] ? Field : never : never;
+    }[keyof Input];
+}
+
+declare namespace $ {
+    type $mol_type_pick<Input, Upper> = Pick<Input, $mol_type_keys_extract<Input, Upper>>;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    type $mol_view_content = $mol_view | Node | string | number | boolean | null;
+    function $mol_view_visible_width(): number;
+    function $mol_view_visible_height(): number;
+    function $mol_view_state_key(suffix: string): string;
+    class $mol_view extends $mol_object {
+        static Root<This extends typeof $mol_view>(this: This, id: number): InstanceType<This>;
+        static roots(): $mol_view[];
+        static auto(): void;
+        title(): string;
+        hint(): string;
+        focused(next?: boolean): boolean;
+        state_key(suffix?: string): string;
+        dom_name(): string;
+        dom_name_space(): string;
+        sub(): readonly $mol_view_content[];
+        sub_visible(): readonly $mol_view_content[];
+        minimal_width(): number;
+        maximal_width(): number;
+        minimal_height(): number;
+        static watchers: Set<$mol_view>;
+        view_rect(): {
+            width: number;
+            height: number;
+            left: number;
+            right: number;
+            top: number;
+            bottom: number;
+        } | null;
+        dom_id(): string;
+        dom_node_external(next?: Element): Element;
+        dom_node(next?: Element): Element;
+        dom_final(): Element | undefined;
+        dom_tree(next?: Element): Element;
+        dom_node_actual(): Element;
+        auto(): any;
+        render(): void;
+        static view_classes(): (typeof $mol_view)[];
+        static _view_names?: Map<string, string[]>;
+        static view_names(suffix: string): string[];
+        view_names_owned(): string[];
+        view_names(): Set<string>;
+        theme(next?: null | string): string | null;
+        attr_static(): {
+            [key: string]: string | number | boolean | null;
+        };
+        attr(): {};
+        style_size(): {
+            [key: string]: string | number;
+        };
+        style(): {
+            [key: string]: string | number;
+        };
+        field(): {
+            [key: string]: any;
+        };
+        event(): {
+            [key: string]: (event: Event) => void;
+        };
+        event_async(): {
+            [x: string]: (event: Event) => Promise<void>;
+        };
+        plugins(): readonly $mol_view[];
+        [$mol_dev_format_head](): any[];
+        view_find(check: (path: $mol_view, text?: string) => boolean, path?: $mol_view[]): Generator<$mol_view[]>;
+        force_render(path: Set<$mol_view>): void;
+        ensure_visible(view: $mol_view, align?: ScrollLogicalPosition): void;
+        bring(): void;
+        destructor(): void;
+    }
+    type $mol_view_all = $mol_type_pick<$, typeof $mol_view>;
+}
+
+declare namespace $ {
+    class $mol_plugin extends $mol_view {
+        dom_node_external(next?: Element): Element;
+        render(): void;
+    }
 }
 
 declare namespace $ {
