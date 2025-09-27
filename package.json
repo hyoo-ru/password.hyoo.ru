@@ -181,6 +181,8 @@
     "$mol_support_css",
     "$mol_support",
     "$mol_print",
+    "$mol_button_major",
+    "$mol_status",
     "$mol_row",
     "$mol_labeler",
     "$mol_icon_trash_can_outline",
