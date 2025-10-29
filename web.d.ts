@@ -1151,10 +1151,9 @@ declare namespace $ {
     function $mol_charset_decode(buffer: AllowSharedBufferSource, encoding?: $mol_charset_encoding): string;
 }
 
-declare var $node: any;
-
 declare namespace $ {
-    function $mol_charset_encode(value: string): Uint8Array<ArrayBuffer>;
+    function $mol_charset_encode(str: string): Uint8Array<ArrayBuffer>;
+    function $mol_charset_encode_to(str: string, buf: Uint8Array<ArrayBuffer>, from?: number): number;
 }
 
 declare namespace $ {
@@ -2214,6 +2213,8 @@ declare namespace $.$$ {
 declare namespace $ {
 }
 
+declare var $node: any;
+
 declare namespace $ {
     type $mol_blob = Blob;
     let $mol_blob: {
@@ -2639,6 +2640,7 @@ declare namespace $ {
         int64(offset: number, next?: bigint): bigint;
         uint48(offset: number, next?: number): number;
         uint64(offset: number, next?: bigint): bigint;
+        float16(offset: number, next?: number): number;
         float32(offset: number, next?: number): number;
         float64(offset: number, next?: number): number;
         asArray(): Uint8Array<ArrayBuffer>;
