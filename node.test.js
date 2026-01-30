@@ -8652,6 +8652,7 @@ var $;
                 flex: {
                     shrink: 1,
                 },
+                minWidth: '8rem',
             },
             Hint: {
                 margin: {
