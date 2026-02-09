@@ -4,11 +4,11 @@
 	"description": "Unique strong password generator. PBKDF2 x10K, no storage, works offline.",
 	"version": "1.0.0",
 	"icons": {
-		"128": "../../hyoo/password/logo/logo.png"
+		"128": "hyoo/password/logo/logo.png"
 	},
 	"action": {
 		"default_popup": "index.html",
-		"default_icon": "../../hyoo/password/logo/logo.png",
+		"default_icon": "hyoo/password/logo/logo.png",
 		"default_title": "Hyper Password"
 	},
 	"permissions": ["activeTab", "clipboardWrite"]
