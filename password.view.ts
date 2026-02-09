@@ -9,11 +9,11 @@ namespace $.$$ {
 			if (next !== undefined) return next
 
 			try {
-				if (typeof chrome !== 'undefined' && chrome.tabs?.query) {
-					const tabs = $mol_wire_sync(chrome.tabs).query({
-						active: true,
-						currentWindow: true,
-					}) as chrome.tabs.Tab[]
+				const cr = (globalThis as any).chrome
+				if (cr?.tabs?.query) {
+					const tabs = $mol_wire_sync(cr.tabs).query({ active: true, currentWindow: true }) as {
+						url?: string
+					}[]
 					if (tabs[0]?.url) return new URL(tabs[0].url).hostname
 				}
 			} catch {}
