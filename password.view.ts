@@ -46,7 +46,7 @@ namespace $.$$ {
 			const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), salt)
 			const pass = $mol_base64_encode(sacred.asArray().slice(1, -1))
 
-			let timer = setTimeout(() => window.close(), 2000)
+			let timer = setTimeout(() => window.close(), 200)
 			document.addEventListener('pointerdown', () => clearTimeout(timer), { once: true })
 
 			navigator.clipboard.writeText(pass).catch(() => {})
