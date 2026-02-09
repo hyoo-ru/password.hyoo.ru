@@ -46,7 +46,10 @@ namespace $.$$ {
 			const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), salt)
 			const pass = $mol_base64_encode(sacred.asArray().slice(1, -1))
 
-			navigator.clipboard.writeText(pass).catch(() => {})
+			navigator.clipboard
+				.writeText(pass)
+				.then(() => window.close())
+				.catch(() => {})
 
 			return pass
 		}

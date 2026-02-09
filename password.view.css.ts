@@ -2,6 +2,7 @@ namespace $.$$ {
 	$mol_style_define($hyoo_password, {
 		width: '400px',
 		minHeight: '100vh',
+		height: 'auto',
 		padding: $mol_gap.block,
 
 		Page: {
