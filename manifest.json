@@ -11,5 +11,14 @@
 		"default_icon": "hyoo/password/logo/logo.png",
 		"default_title": "Hyper Password"
 	},
-	"permissions": ["activeTab", "clipboardWrite"]
+	"permissions": ["activeTab", "clipboardWrite"],
+	"commands": {
+		"_execute_action": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+P",
+				"mac": "Command+Shift+P"
+			},
+			"description": "Generate password"
+		}
+	}
 }
