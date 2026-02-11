@@ -3,6 +3,7 @@
 	"short_name": "Password",
 	"description": "Unique strong password generator. PBKDF2 x10K, no storage, works offline.",
 	"version": "1.0.0",
+	"manifest_version": 3,
 	"icons": {
 		"128": "hyoo/password/logo/logo.png"
 	},
