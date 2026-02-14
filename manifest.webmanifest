@@ -1,0 +1,23 @@
+{
+	"name": "Hyper Password",
+	"short_name": "Password",
+	"description": "Unique strong password generator. PBKDF2 x10K, no storage, works offline.",
+	"icons": [
+		{
+			"src": "../../hyoo/password/logo/logo.png",
+			"type": "image/png",
+			"sizes": "320x320"
+		},
+		{
+			"src": "../../hyoo/password/logo/logo.svg",
+			"type": "image/svg+xml",
+			"sizes": "any"
+		}
+	],
+	"start_url": "../..",
+	"scope": "../..",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"categories": ["utilities", "security"]
+}
