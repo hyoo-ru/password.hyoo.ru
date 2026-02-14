@@ -1,53 +1,56 @@
 namespace $.$$ {
-	$mol_style_define($hyoo_password, {
-		width: '400px',
-		minHeight: '100vh',
-		height: 'auto',
-		padding: $mol_gap.block,
+    $mol_style_define($hyoo_password, {
+        width: '400px',
+        minHeight: '100vh',
+        height: 'auto',
+        padding: $mol_gap.block,
 
-		Page: {
-			margin: 'auto',
+        Page: {
+            margin: 'auto',
 
-			flex: {
-				basis: `25rem`,
-			},
+            flex: {
+                basis: `25rem`,
+            },
 
-			background: {
-				color: $mol_theme.card,
-			},
+            background: {
+                color: $mol_theme.card,
+            },
 
-			border: {
-				radius: $mol_gap.round,
-			},
+            border: {
+                radius: $mol_gap.round,
+            },
 
-			box: {
-				shadow: [[0, 0, $mol_gap.block, 0, $mol_style_func.hsla(0, 0, 0, 0.2)]],
-			},
-		},
+            box: {
+                shadow: [[0, 0, $mol_gap.block, 0, $mol_style_func.hsla(0, 0, 0, 0.2)]],
+            },
+            Head: {
+                flexDirection: 'row-reverse',
+            },
+        },
 
-		Password_bar: {
-			justify: {
-				content: 'space-between',
-			},
-		},
+        Password_bar: {
+            justify: {
+                content: 'space-between',
+            },
+        },
 
-		Copy: {
-			font: {
-				family: 'monospace',
-			},
-		},
+        Copy: {
+            font: {
+                family: 'monospace',
+            },
+        },
 
-		Password: {
-			flex: {
-				shrink: 1,
-			},
-			minWidth: '8rem',
-		},
+        Password: {
+            flex: {
+                shrink: 1,
+            },
+            minWidth: '8rem',
+        },
 
-		Hint: {
-			margin: {
-				top: `2rem`,
-			},
-		},
-	})
+        Hint: {
+            margin: {
+                top: `2rem`,
+            },
+        },
+    })
 }

@@ -1,68 +1,77 @@
 namespace $.$$ {
-	export class $hyoo_password extends $.$hyoo_password {
-		master(next?: string) {
-			return this.$.$mol_state_local.value('master', next) ?? ''
-		}
+    export class $hyoo_password extends $.$hyoo_password {
+        master(next?: string) {
+            if (next !== undefined) {
+                this.auto_close(false)
+            }
+            return this.$.$mol_state_local.value('master', next) ?? ''
+        }
 
-		@$mol_mem
-		context(next?: string) {
-			if (next !== undefined) return next
+        auto_close(next?: boolean) {
+            return this.$.$mol_state_local.value('auto_close', next) ?? false
+        }
 
-			try {
-				const cr = (globalThis as any).chrome
-				if (cr?.tabs?.query) {
-					const tabs = $mol_wire_sync(cr.tabs).query({ active: true, currentWindow: true }) as {
-						url?: string
-					}[]
-					if (tabs[0]?.url) return new URL(tabs[0].url).hostname
-				}
-			} catch {}
+        @$mol_mem
+        context(next?: string) {
+            if (next !== undefined) return next
 
-			if ($mol_dom.document.referrer) {
-				return new URL($mol_dom.document.referrer).hostname
-			}
+            try {
+                const cr = (globalThis as any).chrome
+                if (cr?.tabs?.query) {
+                    const tabs = $mol_wire_sync(cr.tabs).query({ active: true, currentWindow: true }) as {
+                        url?: string
+                    }[]
+                    if (tabs[0]?.url) return new URL(tabs[0].url).hostname
+                }
+            } catch {}
 
-			return ''
-		}
+            if ($mol_dom.document.referrer) {
+                return new URL($mol_dom.document.referrer).hostname
+            }
 
-		@$mol_mem
-		index(next = 0) {
-			this.context()
-			return Math.max(0, next)
-		}
+            return ''
+        }
 
-		@$mol_mem
-		fields() {
-			return [
-				this.Master_block(),
-				this.Context_block(),
-				...(this.master() && this.context() ? [this.Password_block()] : [this.Hint()]),
-			]
-		}
+        @$mol_mem
+        index(next = 0) {
+            this.context()
+            return Math.max(0, next)
+        }
 
-		@$mol_mem
-		password() {
-			const salt = $mol_charset_encode(this.context() + '\n' + this.index())
-			const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), salt)
-			const pass = $mol_base64_encode(sacred.asArray().slice(1, -1))
+        @$mol_mem
+        fields() {
+            return [
+                this.Master_block(),
+                this.Context_block(),
+                ...(this.master() && this.context() ? [this.Password_block()] : [this.Hint()]),
+            ]
+        }
 
-			let timer = setTimeout(() => window.close(), 200)
-			document.addEventListener('pointerdown', () => clearTimeout(timer), { once: true })
+        @$mol_mem
+        password() {
+            const salt = $mol_charset_encode(this.context() + '\n' + this.index())
+            const sacred = $mol_wire_sync(this.$).$mol_crypto_sacred_pass(this.master(), salt)
+            const pass = $mol_base64_encode(sacred.asArray().slice(1, -1))
 
-			navigator.clipboard.writeText(pass).catch(() => {})
+            if (this.auto_close()) {
+                let timer = setTimeout(() => window.close(), 200)
+                document.addEventListener('pointerdown', () => clearTimeout(timer), { once: true })
+            }
 
-			return pass
-		}
+            navigator.clipboard.writeText(pass).catch(() => {})
 
-		context_clear() {
-			this.context('')
-			this.Context().focused(true)
-		}
+            return pass
+        }
 
-		close() {
-			this.master('')
-			this.context('')
-			this.$.$mol_dom.close()
-		}
-	}
+        context_clear() {
+            this.context('')
+            this.Context().focused(true)
+        }
+
+        close() {
+            this.master('')
+            this.context('')
+            this.$.$mol_dom.close()
+        }
+    }
 }
