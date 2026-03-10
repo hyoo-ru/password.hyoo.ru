@@ -225,6 +225,8 @@
     "$mol_base64_encode",
     "$mol_base64_decode",
     "$mol_crypto_salt",
+    "$mol_crypto2_nonce",
+    "$mol_crypto2",
     "$mol_crypto_native",
     "$mol_base64_url",
     "$mol_crypto_restack",
