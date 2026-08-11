@@ -158,6 +158,7 @@
     "$mol_hash_numbers",
     "$mol_link_source",
     "$mol_link",
+    "$mol_dom_safe",
     "$mol_style_define",
     "$mol_style_guard",
     "$mol_style_pseudo",
