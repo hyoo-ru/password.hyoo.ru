@@ -180,6 +180,7 @@
     "$mol_password",
     "$mol_string",
     "$mol_hotkey",
+    "$mol_hotkey2",
     "$mol_dom_listener",
     "$mol_icon_eye",
     "$mol_form_field",
