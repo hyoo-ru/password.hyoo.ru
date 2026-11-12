@@ -194,6 +194,7 @@
     "$mol_status",
     "$mol_row",
     "$mol_labeler",
+    "$mol_error_fence",
     "$mol_icon_trash_can_outline",
     "$mol_icon_trash_can",
     "$mol_icon_trash",
